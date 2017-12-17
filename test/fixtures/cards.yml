@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: MyString
+  nick: MyString
+  after_hours: MyString
+  expires: 2017-12-17 16:57:33
+  valid_from: 2017-12-17 16:57:33
+  disabled: MyString
+  magic: MyString
+
+two:
+  user: MyString
+  nick: MyString
+  after_hours: MyString
+  expires: 2017-12-17 16:57:33
+  valid_from: 2017-12-17 16:57:33
+  disabled: MyString
+  magic: MyString
