@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222233228) do
+ActiveRecord::Schema.define(version: 20171222235416) do
 
   create_table "access_groups", force: :cascade do |t|
     t.string "name", null: false
@@ -36,6 +36,13 @@ ActiveRecord::Schema.define(version: 20171222233228) do
     t.datetime "valid_from", null: false
     t.string "disabled", limit: 1, null: false
     t.string "magic", limit: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "card_group", force: :cascade do |t|
+    t.string "card_id", limit: 50, null: false
+    t.integer "access_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

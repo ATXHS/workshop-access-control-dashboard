@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @card_group.card_id %>
+</p>
+
+<p>
+  <strong>Access group:</strong>
+  <%= @card_group.access_group_id %>
+</p>
+
+<%= link_to 'Edit', edit_card_group_path(@card_group) %> |
+<%= link_to 'Back', card_groups_path %>

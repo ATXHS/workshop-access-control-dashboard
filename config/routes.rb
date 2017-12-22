@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :card_groups
   resources :access_logs
   resources :doors
   resources :cards

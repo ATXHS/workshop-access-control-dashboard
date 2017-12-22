@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Card Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Card</th>
+      <th>Access group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @card_groups.each do |card_group| %>
+      <tr>
+        <td><%= card_group.card_id %></td>
+        <td><%= card_group.access_group_id %></td>
+        <td><%= link_to 'Show', card_group %></td>
+        <td><%= link_to 'Edit', edit_card_group_path(card_group) %></td>
+        <td><%= link_to 'Destroy', card_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Card Group', new_card_group_path %>
