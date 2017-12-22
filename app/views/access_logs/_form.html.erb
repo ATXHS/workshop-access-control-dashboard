@@ -1,0 +1,42 @@
+<%= form_with(model: access_log, local: true) do |form| %>
+  <% if access_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(access_log.errors.count, "error") %> prohibited this access_log from being saved:</h2>
+
+      <ul>
+      <% access_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :logged %>
+    <%= form.datetime_select :logged, id: :access_log_logged %>
+  </div>
+
+  <div class="field">
+    <%= form.label :card_id %>
+    <%= form.text_field :card_id, id: :access_log_card_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :door %>
+    <%= form.text_field :door, id: :access_log_door %>
+  </div>
+
+  <div class="field">
+    <%= form.label :action %>
+    <%= form.text_field :action, id: :access_log_action %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detail %>
+    <%= form.text_field :detail, id: :access_log_detail %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

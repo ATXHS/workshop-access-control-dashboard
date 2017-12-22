@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222230324) do
+ActiveRecord::Schema.define(version: 20171222233228) do
 
   create_table "access_groups", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "access_log", force: :cascade do |t|
+    t.datetime "logged", null: false
+    t.string "card_id", limit: 50
+    t.string "door", limit: 50
+    t.string "action", limit: 1
+    t.string "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
