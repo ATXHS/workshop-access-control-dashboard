@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222235621) do
+ActiveRecord::Schema.define(version: 20171223203432) do
 
   create_table "access_group", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "name"
   end
 
   create_table "access_log", force: :cascade do |t|
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 20171222235621) do
     t.string "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["logged", "card_id"], name: "logged"
   end
 
   create_table "card", primary_key: "card_id", force: :cascade do |t|
@@ -59,6 +61,8 @@ ActiveRecord::Schema.define(version: 20171222235621) do
     t.integer "access_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["access_group_id"], name: "access_group_id"
+    t.index ["door_id"], name: "door_id"
   end
 
 end
