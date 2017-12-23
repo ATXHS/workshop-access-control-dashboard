@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Door:</strong>
+  <%= @door_access.door_id %>
+</p>
+
+<p>
+  <strong>Access group:</strong>
+  <%= @door_access.access_group_id %>
+</p>
+
+<%= link_to 'Edit', edit_door_access_path(@door_access) %> |
+<%= link_to 'Back', door_accesses_path %>

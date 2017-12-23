@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Door Accesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Door</th>
+      <th>Access group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @door_accesses.each do |door_access| %>
+      <tr>
+        <td><%= door_access.door_id %></td>
+        <td><%= door_access.access_group_id %></td>
+        <td><%= link_to 'Show', door_access %></td>
+        <td><%= link_to 'Edit', edit_door_access_path(door_access) %></td>
+        <td><%= link_to 'Destroy', door_access, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Door Access', new_door_access_path %>

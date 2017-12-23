@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222235416) do
+ActiveRecord::Schema.define(version: 20171222235621) do
 
   create_table "access_groups", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,13 @@ ActiveRecord::Schema.define(version: 20171222235416) do
   create_table "door", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.string "default_unlocked", limit: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "door_access", force: :cascade do |t|
+    t.integer "door_id", null: false
+    t.integer "access_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

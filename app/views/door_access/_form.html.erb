@@ -1,0 +1,27 @@
+<%= form_with(model: door_access, local: true) do |form| %>
+  <% if door_access.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(door_access.errors.count, "error") %> prohibited this door_access from being saved:</h2>
+
+      <ul>
+      <% door_access.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :door_id %>
+    <%= form.number_field :door_id, id: :door_access_door_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :access_group_id %>
+    <%= form.number_field :access_group_id, id: :door_access_access_group_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
