@@ -1,9 +1,8 @@
 class Card < ApplicationRecord
   self.table_name = 'card'
+  self.primary_key = 'card_id'
 
-  set_primary_key :card_id
-
-  validates :card_id, presence: true, message: "ID can't be blank"
+  validates :card_id, presence: { message: "ID can't be blank" }
 
   has_many :card_groups
   has_many :access_groups, through: :card_groups
