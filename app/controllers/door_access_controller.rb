@@ -4,7 +4,7 @@ class DoorAccessController < ApplicationController
   # GET /door_access
   # GET /door_access.json
   def index
-    @door_access = DoorAccess.all
+    @door_accesses = DoorAccess.all
   end
 
   # GET /door_access/1
