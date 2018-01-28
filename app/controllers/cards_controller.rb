@@ -1,6 +1,20 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
+  def captured
+    time = params[:capture_time]
+    time = time.gsub(/GMT.*/,'UTC') if Rails.env.production?
+    time = Time.parse(time)
+
+    found = AccessLog.last_denied(time)
+
+    if found && found.card_id
+      render text: found.card_id
+    else
+      render text: "NOT FOUND"
+    end
+  end
+
   # GET /cards
   # GET /cards.json
   def index
