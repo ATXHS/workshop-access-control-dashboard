@@ -4,7 +4,7 @@ class CardGroupsController < ApplicationController
   # GET /card_groups
   # GET /card_groups.json
   def index
-    @card_groups = CardGroup.all
+    @card_groups = CardGroup.paginate(page: params[:page])
   end
 
   # GET /card_groups/1

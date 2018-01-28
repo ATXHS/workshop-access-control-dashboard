@@ -4,7 +4,7 @@ class AccessGroupsController < ApplicationController
   # GET /access_groups
   # GET /access_groups.json
   def index
-    @access_groups = AccessGroup.all
+    @access_groups = AccessGroup.paginate(page: params[:page])
   end
 
   # GET /access_groups/1

@@ -4,7 +4,7 @@ class AccessLogsController < ApplicationController
   # GET /access_logs
   # GET /access_logs.json
   def index
-    @access_logs = AccessLog.all
+    @access_logs = AccessLog.paginate(page: params[:page])
   end
 
   # GET /access_logs/1

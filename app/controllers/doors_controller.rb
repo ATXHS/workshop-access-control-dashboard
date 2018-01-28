@@ -4,7 +4,7 @@ class DoorsController < ApplicationController
   # GET /doors
   # GET /doors.json
   def index
-    @doors = Door.all
+    @doors = Door.paginate(page: params[:page])
   end
 
   # GET /doors/1
