@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
+# Ransack is used for advanced searches and sorting tables
+gem 'ransack', '~> 1.8.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

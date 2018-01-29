@@ -5,11 +5,11 @@
 <table>
   <thead>
     <tr>
-      <th>Logged</th>
-      <th>Card ID</th>
+      <th><%= sort_link @q, :logged, default_order: :desc %></th>
+      <th><%= sort_link @q, :card_id %></th>
       <th>User</th>
-      <th>Door</th>
-      <th>Action</th>
+      <th><%= sort_link @q, :door %></th>
+      <th><%= sort_link @q, :action %></th>
     </tr>
   </thead>
 

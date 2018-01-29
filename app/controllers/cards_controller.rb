@@ -19,7 +19,8 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.paginate(page: params[:page])
+    @q = Card.ransack(params[:q])
+    @cards = @q.result.paginate(page: params[:page])
   end
 
   # GET /cards/1
