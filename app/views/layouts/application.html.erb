@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Workshop Access Control</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "Workshop Access Control" %></title>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +13,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <h1><%= link_to 'Workshop Access Control', root_path %></h1>
+
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li><%= link_to "Access Logs", access_logs_path %></li>
+          <li><%= link_to "Cards", cards_path %></li>
+          <li><%= link_to "Doors", doors_path %></li>
+          <li><%= link_to "Access Groups", access_groups_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-container">
+      <%= yield %>
+    </div>
   </body>
 </html>

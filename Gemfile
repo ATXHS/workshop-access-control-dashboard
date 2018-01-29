@@ -33,10 +33,14 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# The way forms should be handled by default
+gem 'simple_form', '~> 3.5.0'
 # Pagination
 gem 'will_paginate', '~> 3.1.0'
 # Ransack is used for advanced searches and sorting tables
 gem 'ransack', '~> 1.8.6'
+# Foundation design framework
+gem 'foundation-rails', '~> 6.4.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
