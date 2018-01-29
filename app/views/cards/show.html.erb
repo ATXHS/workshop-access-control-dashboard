@@ -11,18 +11,23 @@
 </p>
 
 <p>
+  <strong>Valid from:</strong>
+  <%= l @card.valid_from %>
+</p>
+
+<p>
+  <strong>Expires:</strong>
+  <%= l @card.expires %>
+</p>
+
+<p>
   <strong>After hours:</strong>
   <%= @card.after_hours %>
 </p>
 
 <p>
-  <strong>Expires:</strong>
-  <%= @card.expires %>
-</p>
-
-<p>
-  <strong>Valid from:</strong>
-  <%= @card.valid_from %>
+  <strong>Magic:</strong>
+  <%= @card.magic %>
 </p>
 
 <p>
@@ -31,9 +36,31 @@
 </p>
 
 <p>
-  <strong>Magic:</strong>
-  <%= @card.magic %>
+  <%= link_to 'Edit', edit_card_path(@card) %>
 </p>
 
-<%= link_to 'Edit', edit_card_path(@card) %> |
-<%= link_to 'Back', cards_path %>
+<h3>Access Groups:</h3>
+<%= @access_groups.map(&:name).join(", ") %>
+
+<h3>Access Log</h3>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Door</th>
+    <th>Action</th>
+    <th>Reason</th>
+  </tr>
+
+  <% @access_logs.each do |access_log| %>
+    <tr class="access-<%= access_log.action.downcase %>">
+      <td><%= l access_log.logged %></td>
+      <td><%= access_log.action %></td>
+      <td><%= access_log.door %></td>
+      <td>
+        <% if access_log.action == 'DENY' %>
+        <%= !has_access?(access_log, @access_groups) ? "doesn't have access to #{access_log.door}" :  "unknown" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

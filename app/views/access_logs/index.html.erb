@@ -6,25 +6,27 @@
   <thead>
     <tr>
       <th>Logged</th>
-      <th>Card</th>
+      <th>Card ID</th>
+      <th>User</th>
       <th>Door</th>
       <th>Action</th>
-      <th>Detail</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @access_logs.each do |access_log| %>
-      <tr>
-        <td><%= access_log.logged %></td>
+      <tr class="access-<%= access_log.action.downcase %>">
+        <td><%= link_to l(access_log.logged), access_log %></td>
         <td><%= access_log.card_id %></td>
+        <td>
+          <% if access_log.card %>
+            <%= link_to access_log.card.user, access_log.card %>
+          <% else %>
+            <%=  link_to 'Add User', new_card_path(card_id: access_log.card_id) %>
+          <% end %>
+        </td>
         <td><%= access_log.door %></td>
         <td><%= access_log.action %></td>
-        <td><%= access_log.detail %></td>
-        <td><%= link_to 'Show', access_log %></td>
-        <td><%= link_to 'Edit', edit_access_log_path(access_log) %></td>
-        <td><%= link_to 'Destroy', access_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
