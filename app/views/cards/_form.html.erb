@@ -1,4 +1,4 @@
-<%= form_with(model: card, local: true) do |form| %>
+<%= simple_form_for @card do |form| %>
   <% if card.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(card.errors.count, "error") %> prohibited this card from being saved:</h2>
@@ -19,48 +19,19 @@
     <button id="edit_id" type="button">Edit</button>
   </div>
 
-  <div class="field">
-    <%= form.label :user %>
-    <%= form.text_field :user, id: :card_user %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nick %>
-    <%= form.text_field :nick, id: :card_nick %>
-  </div>
-
-  <div class="field">
-    <%= form.label :valid_from %>
-    <%= form.date_select :valid_from, id: :card_valid_from %>
-  </div>
-
-  <div class="field">
-    <%= form.label :expires %>
-    <%= form.date_select :expires, id: :card_expires %>
-  </div>
-
-  <div class="field">
-    <%= form.label :after_hours %>
-    <%= form.check_box :after_hours, id: :card_after_hours %>
-  </div>
-
-  <div class="field">
-    <%= form.label :disabled %>
-    <%= form.check_box :disabled, id: :card_disabled %>
-  </div>
-
-  <div class="field">
-    <%= form.label :magic %>
-    <%= form.check_box :magic, id: :card_magic %>
-  </div>
+  <%= form.input :user %>
+  <%= form.input :nick %>
+  <%= form.input :valid_from, as: :date %>
+  <%= form.input :expires, as: :date %>
+  <%= form.input :after_hours, as: :boolean %>
+  <%= form.input :disabled, as: :boolean %>
+  <%= form.input :magic, as: :boolean %>
 
   <h2>Access Groups</h2>
 
   <%= form.collection_check_boxes(:access_group_ids, @access_groups, :id, :name) %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.button :submit %>
 <% end %>
 
 <div id="capture_dialog" class="dialog">

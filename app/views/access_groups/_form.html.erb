@@ -1,4 +1,4 @@
-<%= form_with(model: access_group, local: true) do |form| %>
+<%= simple_form_for @access_group do |form| %>
   <% if access_group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(access_group.errors.count, "error") %> prohibited this access_group from being saved:</h2>
@@ -11,12 +11,6 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :access_group_name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.input :name %>
+  <%= form.button :submit %>
 <% end %>

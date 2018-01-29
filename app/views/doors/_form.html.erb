@@ -1,4 +1,4 @@
-<%= form_with(model: door, local: true) do |form| %>
+<%= simple_form_for @door do |form| %>
   <% if door.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(door.errors.count, "error") %> prohibited this door from being saved:</h2>
@@ -11,17 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :door_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :default_unlocked %>
-    <%= form.text_field :default_unlocked, id: :door_default_unlocked %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= form.input :name %>
+  <%= form.input :default_unlocked %>
+  <%= form.button :submit %>
 <% end %>
