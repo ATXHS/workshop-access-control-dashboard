@@ -12,6 +12,14 @@
   <% end %>
 
   <div class="field">
+    <label for="card_id">ID</label>
+    <input type="input" id="card_id" name="card_id" disabled="true" value="<%=@card.id || params[:card_id]%>"/>
+    <input type="hidden" id="hidden_card_id" name="hidden_card_id" value="<%= params[:card_id] %>"/>
+    <button type="button" id="start_capture">Capture Card</button>
+    <button id="edit_id" type="button">Edit</button>
+  </div>
+
+  <div class="field">
     <%= form.label :user %>
     <%= form.text_field :user, id: :card_user %>
   </div>
@@ -22,31 +30,42 @@
   </div>
 
   <div class="field">
-    <%= form.label :after_hours %>
-    <%= form.text_field :after_hours, id: :card_after_hours %>
+    <%= form.label :valid_from %>
+    <%= form.date_select :valid_from, id: :card_valid_from %>
   </div>
 
   <div class="field">
     <%= form.label :expires %>
-    <%= form.datetime_select :expires, id: :card_expires %>
+    <%= form.date_select :expires, id: :card_expires %>
   </div>
 
   <div class="field">
-    <%= form.label :valid_from %>
-    <%= form.datetime_select :valid_from, id: :card_valid_from %>
+    <%= form.label :after_hours %>
+    <%= form.check_box :after_hours, id: :card_after_hours %>
   </div>
 
   <div class="field">
     <%= form.label :disabled %>
-    <%= form.text_field :disabled, id: :card_disabled %>
+    <%= form.check_box :disabled, id: :card_disabled %>
   </div>
 
   <div class="field">
     <%= form.label :magic %>
-    <%= form.text_field :magic, id: :card_magic %>
+    <%= form.check_box :magic, id: :card_magic %>
   </div>
+
+  <h2>Access Groups</h2>
+
+  <%= form.collection_check_boxes(:access_group_ids, @access_groups, :id, :name) %>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<div id="capture_dialog" class="dialog">
+  <p id="message">
+    Capturing the next DENY in the access log...<br/>
+  </p>
+  <button id="stop_capture">Stop Capture</button>
+</div>

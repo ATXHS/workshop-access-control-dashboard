@@ -9,6 +9,5 @@ Rails.application.routes.draw do
   post 'cards/captured', to: 'cards#captured'
 
   resources :doors
-  #resources :card_groups
   #resources :door_access
 end

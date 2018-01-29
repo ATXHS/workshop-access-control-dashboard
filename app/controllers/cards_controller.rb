@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :fix_boolean_fields, :only => [:create, :update]
 
   def captured
     time = params[:capture_time]
@@ -24,15 +25,22 @@ class CardsController < ApplicationController
   # GET /cards/1
   # GET /cards/1.json
   def show
+    @access_groups = @card.access_groups
+    @access_logs = @card.access_logs.order("logged")
   end
 
   # GET /cards/new
   def new
     @card = Card.new
+    @card.valid_from = 2.day.ago
+    @card.expires    = 1.year.from_now
+
+    @access_groups = AccessGroup.all
   end
 
   # GET /cards/1/edit
   def edit
+    @access_groups = AccessGroup.all
   end
 
   # POST /cards
@@ -45,6 +53,7 @@ class CardsController < ApplicationController
         format.html { redirect_to @card, notice: 'Card was successfully created.' }
         format.json { render :show, status: :created, location: @card }
       else
+        @access_groups = AccessGroup.all
         format.html { render :new }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
@@ -59,6 +68,7 @@ class CardsController < ApplicationController
         format.html { redirect_to @card, notice: 'Card was successfully updated.' }
         format.json { render :show, status: :ok, location: @card }
       else
+        @access_groups = AccessGroup.all
         format.html { render :edit }
         format.json { render json: @card.errors, status: :unprocessable_entity }
       end
@@ -83,6 +93,17 @@ class CardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def card_params
-      params.require(:card).permit(:user, :nick, :after_hours, :expires, :valid_from, :disabled, :magic)
+      params.require(:card).permit(
+        :user, :nick, :after_hours, :expires, :valid_from, :disabled, :magic, access_group_ids: []
+      )
+    end
+
+    ##
+    # Boolean fields are saved as Y/N, not 0/1
+    #*
+    def fix_boolean_fields
+      params[:card][:magic]       = params[:card][:magic] == '1' ? 'Y' : 'N'
+      params[:card][:disabled]    = params[:card][:disabled] == '1' ? 'Y' : 'N'
+      params[:card][:after_hours] = params[:card][:after_hours] == '1' ? 'Y' : 'N'
     end
 end
