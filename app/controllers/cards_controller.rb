@@ -20,7 +20,7 @@ class CardsController < ApplicationController
   # GET /cards.json
   def index
     @q = Card.ransack(params[:q])
-    @cards = @q.result.paginate(page: params[:page])
+    @cards = @q.result.page(params[:page])
   end
 
   # GET /cards/1

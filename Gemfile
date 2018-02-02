@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # The way forms should be handled by default
 gem 'simple_form', '~> 3.5.0'
 # Pagination
-gem 'will_paginate', '~> 3.1.0'
+gem 'kaminari', '~> 1.1.1'
 # Ransack is used for advanced searches and sorting tables
 gem 'ransack', '~> 1.8.6'
 # Foundation design framework

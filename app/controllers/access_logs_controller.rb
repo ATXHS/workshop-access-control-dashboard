@@ -5,7 +5,7 @@ class AccessLogsController < ApplicationController
   # GET /access_logs.json
   def index
     @q = AccessLog.ransack(params[:q])
-    @access_logs = @q.result.paginate(page: params[:page])
+    @access_logs = @q.result.page(params[:page])
   end
 
   # GET /access_logs/1
