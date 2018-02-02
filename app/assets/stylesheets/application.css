@@ -16,6 +16,10 @@
 
  */
 
+.top-bar {
+  margin-bottom: 1.5rem;
+}
+
 select.datetime, select.date {
   width: auto;
 }
