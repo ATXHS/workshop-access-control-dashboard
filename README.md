@@ -1,24 +1,15 @@
-# README
+# Workshop Access Control Dashboard
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a web interface for managing the [cerberus-prox](https://github.com/dfraser/cerberus-prox) keycard system.
 
-Things you may want to cover:
+The two projects share a database and do not communicate directly.
 
-* Ruby version
+**Warning: Database changes may break cerberus-prox!**
 
-* System dependencies
+## Setup
 
-* Configuration
+This project is built using Ruby on Rails. It is best to have rbenv or rvm
+installed before trying to run this.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Install required gems with `bundle`
+* Development server: `bundle exec rails server`
