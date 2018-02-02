@@ -1,11 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Cards</h2>
+<div class="grid-x">
+  <div class="small-6 cell">
+    <h2>Cards</h2>
+  </div>
+
+  <div class="small-6 cell text-right">
+    <%= link_to 'Add New Card', new_card_path, class: 'button' %>
+  </div>
+</div>
 
 <%= search_form_for @q do |f| %>
-  <%= f.label :user_cont, "Search users" %>
-  <%= f.search_field :user_cont %>
-  <%= f.submit %>
+  <div class="input-group">
+    <%= f.label :user_cont, "Search users", class: 'input-group-label' %>
+    <%= f.search_field :user_cont, class: 'input-group-field' %>
+
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
+  </div>
 <% end %>
 
 <table>
@@ -39,7 +52,3 @@
 </table>
 
 <%= paginate @cards %>
-
-<p>
-  <%= link_to 'New Card', new_card_path %>
-</p>

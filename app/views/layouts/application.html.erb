@@ -13,15 +13,19 @@
   </head>
 
   <body>
-    <h1><%= link_to 'Workshop Access Control', root_path %></h1>
+    <div class="title-bar">
+      <div class="title-bar-left">
+        <span class="title-bar-title"><%= link_to 'Workshop Access Control', root_path %></span>
+      </div>
+    </div>
 
     <div class="top-bar">
       <div class="top-bar-left">
         <ul class="menu">
-          <li><%= link_to "Access Logs", access_logs_path %></li>
-          <li><%= link_to "Cards", cards_path %></li>
-          <li><%= link_to "Doors", doors_path %></li>
-          <li><%= link_to "Access Groups", access_groups_path %></li>
+          <%= menu_item "Access Logs", access_logs_path %>
+          <%= menu_item "Cards", cards_path %>
+          <%= menu_item "Doors", doors_path %>
+          <%= menu_item "Access Groups", access_groups_path %>
         </ul>
       </div>
     </div>

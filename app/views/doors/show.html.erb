@@ -1,13 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @door.name %>
-</p>
+<h2><%= @door.name %></h2>
 
 <p>
   <strong>Default unlocked:</strong>
   <%= @door.default_unlocked %>
 </p>
 
-<%= link_to 'Edit', edit_door_path(@door) %>
+<p><%= link_to 'Edit', edit_door_path(@door), class: 'button' %> <%= link_to 'Delete', @door, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></p>

@@ -1,46 +1,34 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @card.user %>
-</p>
+<div class="grid-x">
+  <div class="small-6 cell">
+    <h3>
+      Card <%= @card.id %> <%= @card.disabled ? 'Disabled' : 'Enabled' %>
+    </h3>
 
-<p>
-  <strong>Nick:</strong>
-  <%= @card.nick %>
-</p>
+    <h4><%= @card.user %> <small>(<%= @card.nick %>)</small></h4>
 
-<p>
-  <strong>Valid from:</strong>
-  <%= l @card.valid_from %>
-</p>
+    <p>
+      Active from <%= l @card.valid_from.to_date %> to <%= l @card.expires.to_date %>
+    </p>
 
-<p>
-  <strong>Expires:</strong>
-  <%= l @card.expires %>
-</p>
+    <h5>Settings</h5>
 
-<p>
-  <strong>After hours:</strong>
-  <%= @card.after_hours %>
-</p>
+    <ul>
+      <li><strong>After hours:</strong> <%= @card.after_hours %></li>
+      <li><strong>Magic:</strong> <%= @card.magic %></li>
+    </ul>
+  </div>
 
-<p>
-  <strong>Magic:</strong>
-  <%= @card.magic %>
-</p>
+  <div class="small-6 cell">
+    <p>
+      <%= link_to 'Edit Card', edit_card_path(@card), class: 'button' %>
+    </p>
 
-<p>
-  <strong>Disabled:</strong>
-  <%= @card.disabled %>
-</p>
-
-<p>
-  <%= link_to 'Edit', edit_card_path(@card) %>
-</p>
-
-<h3>Access Groups:</h3>
-<%= @access_groups.map(&:name).join(", ") %>
+    <h3>Access Groups:</h3>
+    <%= @access_groups.map(&:name).join(", ") %>
+  </div>
+</div>
 
 <h3>Access Log</h3>
 <table>

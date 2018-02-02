@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Access Logs</h2>
+<div class="grid-x">
+  <div class="cell">
+    <h2>Access Logs</h2>
+  </div>
+</div>
 
 <table>
   <thead>
@@ -33,7 +37,3 @@
 </table>
 
 <%= paginate @access_logs %>
-
-<p>
-  <%= link_to 'New Access Log', new_access_log_path %>
-</p>

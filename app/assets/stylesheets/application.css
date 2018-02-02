@@ -19,3 +19,11 @@
 select.datetime, select.date {
   width: auto;
 }
+
+.title-bar-title a, .title-bar-title a:visited {
+  color: #fefefe;
+}
+
+.grid-x {
+  margin-bottom: 1.5rem;
+}

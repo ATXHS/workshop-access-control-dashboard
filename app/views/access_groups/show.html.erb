@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @access_group.name %>
-</p>
+<h2><%= @access_group.name %></h2>
 
-<%= link_to 'Edit', edit_access_group_path(@access_group) %>
+<p><%= link_to 'Edit', edit_access_group_path(@access_group), class: 'button' %> <%= link_to 'Delete', @access_group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button' %></p>
