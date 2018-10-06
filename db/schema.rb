@@ -12,14 +12,14 @@
 
 ActiveRecord::Schema.define(version: 20171223203432) do
 
-  create_table "access_group", force: :cascade do |t|
+  create_table "access_group", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "name"
   end
 
-  create_table "access_log", force: :cascade do |t|
+  create_table "access_log", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "logged", null: false
     t.string "card_id", limit: 50
     t.string "door", limit: 50
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171223203432) do
     t.index ["logged", "card_id"], name: "logged"
   end
 
-  create_table "card", primary_key: "card_id", force: :cascade do |t|
+  create_table "card", primary_key: "card_id", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "user", null: false
     t.string "nick"
     t.string "after_hours", limit: 1, null: false
@@ -42,21 +42,21 @@ ActiveRecord::Schema.define(version: 20171223203432) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "card_group", force: :cascade do |t|
+  create_table "card_group", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "card_id", limit: 50, null: false
     t.integer "access_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "door", force: :cascade do |t|
+  create_table "door", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", limit: 50, null: false
     t.string "default_unlocked", limit: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "door_access", force: :cascade do |t|
+  create_table "door_access", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "door_id", null: false
     t.integer "access_group_id", null: false
     t.datetime "created_at", null: false
